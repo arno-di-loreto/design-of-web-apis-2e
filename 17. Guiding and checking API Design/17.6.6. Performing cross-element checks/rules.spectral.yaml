@@ -1,0 +1,16 @@
+functions:
+  # name of the js file under ./functions
+  # (not the function name in the js file)
+  - consistentReferences
+
+rules:
+  consistent-rw-reference:
+    resolved: false
+    given: 
+      - $.paths.*[post,put]
+    then:
+      - function: consistentReferences
+        # Without suffix option, we expect operation use a single read-write schema
+        # Uncomment option to allow different schemas but with similar names
+        #functionOptions:
+          #requestSuffix: "Create"

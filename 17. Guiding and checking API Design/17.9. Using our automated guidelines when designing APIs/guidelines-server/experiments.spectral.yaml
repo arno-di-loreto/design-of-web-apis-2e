@@ -1,0 +1,11 @@
+functions:
+  - vocabulary
+
+rules:
+  vocabulary-experimental:
+    recommended: false # not enable by default on "extends"
+    given:
+      - $..[schema,schemas]..properties
+    then:
+      - field: "@key"
+        function: vocabulary
