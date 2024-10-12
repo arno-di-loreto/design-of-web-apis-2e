@@ -1,0 +1,34 @@
+{
+  "name": "design-of-web-apis-2e-17-linting-an-api",
+  "version": "1.0.0",
+  "homepage": "https://www.manning.com/books/the-design-of-web-apis-second-edition",
+  "description": "Spectral samples of chapter 17 of The Design of Web APIs, Second Edition",
+  "scripts": {
+    "17.3.2" : "cd 17.3.2* && spectral lint api.openapi.yaml -r rules.spectral.yaml",
+    "17.5.1" : "cd 17.5.1* && spectral lint api.openapi.yaml -r rules.spectral.yaml",
+    "17.5.2" : "cd 17.5.2* && spectral lint api.openapi.yaml -r rules.spectral.yaml",
+    "17.5.3" : "cd 17.5.3* && spectral lint api.openapi.yaml -r rules.spectral.yaml",
+    "17.5.4" : "cd 17.5.4* && spectral lint api.openapi.yaml -r rules.spectral.yaml",
+    "17.6.1" : "cd 17.6.1* && spectral lint api.openapi.yaml -r rules.spectral.yaml",
+    "17.6.2" : "cd 17.6.2* && spectral lint api.openapi.yaml -r rules.spectral.yaml",
+    "17.6.3" : "cd 17.6.3* && spectral lint api.openapi.yaml -r rules.spectral.yaml",
+    "17.6.4" : "cd 17.6.4* && spectral lint api.openapi.yaml -r rules.spectral.yaml",
+    "17.6.5" : "cd 17.6.5* && spectral lint api.openapi.yaml -r rules.spectral.yaml",
+    "17.6.6" : "cd 17.6.6* && spectral lint api.openapi.yaml -r rules.spectral.yaml",
+    "17.7.1" : "cd 17.7.1* && spectral lint api.openapi.yaml -r rules.spectral.yaml",
+    "17.7.2" : "cd 17.7.2* && spectral lint api.openapi.yaml -r rules.spectral.yaml",
+    "17.7.3" : "cd 17.7.3* && spectral lint api.openapi.yaml -r rules.spectral.yaml",
+    "17.8": "cd 17.8* && spectral lint api.openapi.yaml -r guidelines.spectral.yaml",
+    "17.9": "cd 17.9*/api-repository && spectral lint openapi.yaml",
+    "17.9.1": "npm run 17.9",
+    "17.9.2": "npm run 17.9"
+  },
+  "keywords": [
+    "spectral"
+  ],
+  "author": "Arnaud Lauret",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "@stoplight/spectral-cli": "^6.13.1"
+  }
+}

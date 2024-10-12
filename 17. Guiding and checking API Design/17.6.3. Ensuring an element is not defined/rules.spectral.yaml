@@ -1,0 +1,11 @@
+rules:
+  no-404-if-no-path-parameters:
+    given:
+      - $.paths[?(!@property.match(/{/))].*.responses.404
+    then:
+      - function: undefined
+  no-correlation-id-operation-level:
+    given:
+      - $.paths.*.*.parameters[?(@.name === "Correlation-Id")]
+    then:
+      - function: undefined

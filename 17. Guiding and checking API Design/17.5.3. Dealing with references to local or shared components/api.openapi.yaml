@@ -1,0 +1,21 @@
+openapi: 3.1.0
+
+info:
+  title: Banking
+  version: "1.0"
+
+paths:
+  /accounts/{accountId}:
+    parameters:
+      - $ref: "#/components/parameters/AccountId"
+    get:
+      description: An account
+
+components:
+  parameters:
+    AccountId:
+      name: accountId
+      in: path
+      required: true
+      schema:
+        type: string
