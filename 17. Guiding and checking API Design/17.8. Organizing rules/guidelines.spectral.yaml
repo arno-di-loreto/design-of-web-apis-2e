@@ -1,3 +1,0 @@
-extends:
-  - ./errors.spectral.yaml
-  - ./openapi.spectral.yaml

@@ -1,5 +1,0 @@
-extends:
-  - ./errors.spectral.yaml
-  - ./search.spectral.yaml
-  - ./experiments.spectral.yaml
-  - ./openapi.spectral.yaml

@@ -1,9 +1,0 @@
-rules:
-  error-500-defined:
-    severity: error
-    message: Operation misses a 500 response
-    given:
-      - $.paths.*.*.responses
-    then:
-      field: "500"
-      function: defined
