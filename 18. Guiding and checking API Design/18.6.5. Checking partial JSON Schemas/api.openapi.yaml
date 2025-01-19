@@ -1,0 +1,57 @@
+openapi: 3.1.0
+
+info:
+  title: Banking
+  version: "1.0"
+
+paths:
+  /accounts:
+    get:
+      responses:
+        "200":
+          description: Found accounts
+          content:
+            application/json:
+              schema:
+                # 🚨 An array instead of object with data property
+                type: array
+  /owners:
+    get:
+      responses:
+        "200":
+          description: Found accounts
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [data]
+                properties:
+                  # 🚨 data is an array of string
+                  data: 
+                    type: array
+                    items:
+                      type: string
+  /transactions:
+    get:
+      responses:
+        "200":
+          description: Found transactions
+          content:
+            application/json:
+              schema:
+                # ✅ list format is OK
+                type: object
+                required: [data]
+                properties:
+                  data: 
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        # We can have anything here
+                        id:
+                          type: string
+                        date:
+                          type: string
+                          format: date
+                        

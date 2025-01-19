@@ -1,0 +1,45 @@
+openapi: 3.1.0
+
+info:
+  title: Banking
+  version: "1.0"
+
+paths:
+  /transactions:
+    get:
+      parameters:
+        - name: merchanTId
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: date
+          in: query
+          schema:
+            type: string
+            format: date
+      responses:
+        "200":
+          description: Found transactions
+  /accounts/{IBAN}:
+    parameters:
+      - name: IBAN
+        in: path
+        required: true
+        schema:
+          type: string
+    get:
+      responses:
+        "200":
+          description: An Account
+components:
+  schemas:
+    Account:
+      properties:
+        ID:
+          type: string
+        Owner: 
+          type: object
+          properties:
+            Id:
+              type string

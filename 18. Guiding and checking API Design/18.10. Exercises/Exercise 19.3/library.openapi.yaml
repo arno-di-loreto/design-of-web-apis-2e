@@ -1,0 +1,22 @@
+openapi: 3.1.0
+
+info:
+  title: Banking API Library
+  version: "1.0"
+
+components:
+  responses:
+    ServiceUnavailable:
+      description: Service unavailable
+      content:
+        application/json:
+          schema:
+            required:
+              - message
+              - endTime
+            properties:
+              message:
+                type: string
+              endTime:
+                type: string
+                format: date-time

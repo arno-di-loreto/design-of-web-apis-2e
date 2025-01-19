@@ -1,0 +1,6 @@
+rules:
+  my-new-rule:
+    given:
+      - $.paths[?(@property.match(/}$/))].*.responses[?(@property.match(/^(4|5)/))]
+    then:
+      - function: undefined

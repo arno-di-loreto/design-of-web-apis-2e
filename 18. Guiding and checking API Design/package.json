@@ -1,0 +1,39 @@
+{
+  "name": "design-of-web-apis-2e-18-linting-an-api",
+  "version": "1.0.0",
+  "homepage": "https://www.manning.com/books/the-design-of-web-apis-second-edition",
+  "description": "Spectral samples of chapter 18 of The Design of Web APIs, Second Edition",
+  "scripts": {
+    "18.3.2" : "cd 18.3.2* && spectral lint api.openapi.yaml -r rules.spectral.yaml",
+    "18.5.1" : "cd 18.5.1* && spectral lint api.openapi.yaml -r rules.spectral.yaml",
+    "18.5.2" : "cd 18.5.2* && spectral lint api.openapi.yaml -r rules.spectral.yaml",
+    "18.5.3" : "cd 18.5.3* && spectral lint api.openapi.yaml -r rules.spectral.yaml",
+    "18.5.4" : "cd 18.5.4* && spectral lint api.openapi.yaml -r rules.spectral.yaml",
+    "18.6.1" : "cd 18.6.1* && spectral lint api.openapi.yaml -r rules.spectral.yaml",
+    "18.6.2" : "cd 18.6.2* && spectral lint api.openapi.yaml -r rules.spectral.yaml",
+    "18.6.3" : "cd 18.6.3* && spectral lint api.openapi.yaml -r rules.spectral.yaml",
+    "18.6.4" : "cd 18.6.4* && spectral lint api.openapi.yaml -r rules.spectral.yaml",
+    "18.6.5" : "cd 18.6.5* && spectral lint api.openapi.yaml -r rules.spectral.yaml",
+    "18.6.6" : "cd 18.6.6* && spectral lint api.openapi.yaml -r rules.spectral.yaml",
+    "18.7.1" : "cd 18.7.1* && spectral lint api.openapi.yaml -r rules.spectral.yaml",
+    "18.7.2" : "cd 18.7.2* && spectral lint api.openapi.yaml -r rules.spectral.yaml",
+    "18.7.3" : "cd 18.7.3* && spectral lint api.openapi.yaml -r rules.spectral.yaml",
+    "18.8": "cd 18.8* && spectral lint api.openapi.yaml -r guidelines.spectral.yaml",
+    "18.9": "cd 18.9*/api-repository && spectral lint openapi.yaml",
+    "18.9.1": "npm run 18.9",
+    "18.9.2": "npm run 18.9",
+    "E.19.1": "cd \"18.10. Exercises/Exercise 19.1\" && spectral lint api.openapi.yaml -r rules.spectral.yaml",
+    "E.19.2": "cd \"18.10. Exercises/Exercise 19.2\" && spectral lint api.openapi.yaml -r rules.spectral.yaml",
+    "E.19.3": "cd \"18.10. Exercises/Exercise 19.3\" && spectral lint api.openapi.yaml -r rules.spectral.yaml",
+    "E.19.4": "cd \"18.10. Exercises/Exercise 19.4\" && spectral lint api.openapi.yaml -r rules.spectral.yaml",
+    "E.19.5": "cd \"18.10. Exercises/Exercise 19.5\" && spectral lint api.openapi.yaml -r rules.spectral.yaml"
+  },
+  "keywords": [
+    "spectral"
+  ],
+  "author": "Arnaud Lauret",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "@stoplight/spectral-cli": "^6.13.1"
+  }
+}

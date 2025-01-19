@@ -1,0 +1,47 @@
+openapi: 3.1.0
+
+info:
+  title: Banking
+  version: "1.0"
+
+paths:
+  /transfers:
+    # ✅ Path-level parameters list without Correlation-Id header
+    parameters:
+      - name: Correlation-Id
+        in: header
+        schema:
+          type: string
+    post:
+      responses:
+        "201":
+          description: Money transfered
+        # ✅ No path parameters and no 404 defined
+  /accounts:
+    get:
+      parameters:
+        # 🚨 Correlation-Id header at operation level
+        - name: Correlation-Id
+          in: header
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Found accounts
+        # 🚨 404 on operation under path without path parameter
+        "404":
+          description: No accounts found
+  /accounts/{accountId}:
+    parameters:
+      - name: accountId
+        in: path
+        required: true
+        schema:
+          type: string
+    get:
+      responses:
+        "200":
+          description: An account
+        # ✅ 404 on operation under path with path parameter
+        "404":
+          description: No account matching provided accountId

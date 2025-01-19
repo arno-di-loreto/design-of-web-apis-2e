@@ -1,0 +1,54 @@
+openapi: 3.1.0
+
+info:
+  title: Banking
+  version: "1.0"
+
+paths:
+  /accounts:
+    parameters:
+      # 🚨 Correlation-Id header defined instead of using shared components
+      - name: Correlation-Id
+        in: header
+        schema:
+          type: string
+    get:
+      responses:
+        "200":
+          description: Found accounts
+          content:
+            application/json:
+              schema:
+                # 🚨 Inline response schema
+                type: array
+        
+        "500":
+          # 🚨 Not Error500 shared component
+          description: Unepected error
+
+  /accounts/{accountId}:
+    parameters:
+      # ✅ Reference to shared CorrelationId component
+      - $ref: "./library.openapi.yaml#/components/parameters/CorrelationId"
+      - name: accountId
+        in: path
+        required: true
+        schema:
+          type: string
+    get:
+      responses:
+        "200":
+          description: An account
+          content:
+            application/json:
+              schema:
+                # ✅ Reference to response schema
+                $ref: "#/components/schemas/Account"
+        "500":
+          # ✅ Reference to shared Error500 component
+          $ref: "./library.openapi.yaml#/components/responses/Error500"
+
+components:
+  schemas:
+    Account:
+      type: object

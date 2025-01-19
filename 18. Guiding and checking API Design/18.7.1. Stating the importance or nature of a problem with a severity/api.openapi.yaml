@@ -1,0 +1,30 @@
+openapi: 3.1.0
+
+info:
+  title: Banking
+  version: "1.0"
+
+paths:
+
+  /transactions:
+    get:
+      responses:
+        "200":
+          description: Found transaction
+          content:
+            text/csv:
+              schema:
+                type: string
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TransactionCreate"
+
+components:
+  schemas:
+    TransactionCreate:
+      properties:
+        Amount:
+          type: number

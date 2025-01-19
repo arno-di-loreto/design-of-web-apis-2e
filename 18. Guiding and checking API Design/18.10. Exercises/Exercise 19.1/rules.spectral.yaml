@@ -1,0 +1,11 @@
+rules:
+  semantic-versioning:
+    description: Semantic versioning must be used
+    message: "{{value}} is not a valid semantic version (1.0.0, for example)"
+    severity: error
+    given:
+      - $.info.version
+    then:
+      - function: pattern
+        functionOptions:
+          match: "^[0-9]+\\.[0-9]+\\.[0-9]+$"

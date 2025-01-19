@@ -1,0 +1,41 @@
+openapi: 3.1.0
+info:
+  title: Banking
+  version: "1.0"
+paths:
+  /accounts/{accountId}:
+    parameters:
+      - name: accountId
+        in: path
+        required: true
+        schema:
+          type: string
+    post:
+      responses:
+        "201":
+          description: Accound created.
+
+  /transfers/{transferId}:
+    parameters:
+      - name: transferId
+        in: path
+        required: true
+        schema:
+          type: string
+    get:
+      responses:
+        "200":
+          description: A transfer.
+  /customers/{customerId}:
+    parameters:
+      - name: customerId
+        in: path
+        required: true
+        schema:
+          type: string
+    get:
+      responses:
+        "200":
+          description: A transfer.
+        "400":
+          description: Bad request.
