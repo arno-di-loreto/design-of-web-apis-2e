@@ -1,0 +1,40 @@
+openapi: 3.1.0
+info:
+  title: Banking
+  version: "1.0"
+paths:
+  /accounts:
+    post:
+      responses:
+        "201":
+          description: Account created.
+          content:
+            application/json:
+              schema: # OK
+                required:
+                  - id
+                properties:
+                  id:
+                    type: string
+  /transfers:
+    post:
+      responses:
+        "201":
+          description: Transfer created.
+          content:
+            application/json:
+              schema: # No id
+                properties:
+                  transferId:
+                    type: string
+  /customers:
+    post:
+      responses:
+        "201":
+          description: Customer created.
+          content:
+            application/json:
+              schema: # id not required
+                properties:
+                  id:
+                    type: string

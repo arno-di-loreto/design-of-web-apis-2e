@@ -1,0 +1,68 @@
+aliases:
+  CollectionResources:
+    - $.paths[?(!@property.match(/}$/))]
+  UnitResources:
+    - $.paths[?(@property.match(/}$/))]
+  SearchOperations:
+    - "#CollectionResources.get"
+
+rules:
+  property-name-camel:
+    description: Property names must be camelCased
+    severity: error
+    given:
+      - $..[schemas,schema]..properties
+    then:
+      - field: "@key"
+        function: casing
+        functionOptions:
+          type: camel
+
+  post-body-no-required:
+    description: A POST request body without required properties is unusual
+    severity: warn
+    given:
+      - $.paths.*.post.requestBody.content.application/json.schema
+    then:
+      - field: required
+        function: truthy
+
+  search-filters:
+    description: Search filters facilitates usage
+    severity: info
+    given:
+      - "#SearchOperations"
+    then:
+      - field: parameters
+        function: schema
+        functionOptions:
+          schema:
+            type: array
+            minItems: 2 # Expecting other parameters than required pagination
+
+  used-media-type:
+    description: Not-yet-used media types must be validated
+    severity: hint
+    given:
+      - $..requestBody.content
+      - $..responses.*.content
+    then:
+      - field: "@key"
+        function: enumeration
+        functionOptions:
+          values:
+            - application/json
+
+  standard-pagination-parameters:
+    # no severity defined
+    given:
+      - "#SearchOperations"
+    then:
+      - field: parameters
+        function: schema
+        functionOptions:
+          schema:
+            type: array
+            contains:
+              const:
+                $ref: "./library.openapi.yaml#/components/parameters/Pagination"

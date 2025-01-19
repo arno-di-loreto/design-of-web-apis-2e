@@ -1,0 +1,16 @@
+openapi: 3.1.0
+info:
+  title: Banking
+  version: "1.0"
+paths:
+  /cards:
+    get:
+      responses:
+        "200":
+          description: Found cards"
+        "503":
+          $ref: "library.openapi.yaml#/components/responses/ServiceUnavailable"
+    post:
+      responses:
+        "201":
+          description: Created card

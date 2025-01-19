@@ -1,0 +1,29 @@
+rules:
+  required-resource-id-201:
+    description: Response 201 must have a required id property
+    severity: error
+    given:
+      - $.paths.*.*.responses.201.content.application/json.schema
+    then:
+      - function: schema
+        functionOptions:
+          schema:
+            required:
+              - required
+              - properties
+            properties:
+              required:
+                contains:
+                  const: id
+              properties:
+                required:
+                  - id
+                properties:
+                  id:
+                    required:
+                      - type
+                    properties:
+                      type:
+                        enum:
+                          - string
+                          - integer

@@ -1,0 +1,69 @@
+rules:
+  # The easy way: we check the appropriate reference to the shared libary (we trust) is used
+  service-unavailable-ref:
+    description: An operation must return a standard 503 response
+    message: Use 503 response from library
+    resolved: false
+    severity: error
+    given:
+      - $.paths.*.*.responses
+    then:
+      - field: "503"
+        function: schema
+        functionOptions:
+          schema:
+            const:
+              $ref: "library.openapi.yaml#/components/responses/ServiceUnavailable"
+  # The hard way: we check the hardcoded 503 response, giving latttitude to add more properties or descriptions
+  # It's more for JSON Schema demonstration than for real life (where we would enforce an exact match)
+  service-unavailable-hardcoded:
+    description: The 503 response must be hardcoded
+    message: "Missing or incorrect 503: {{error}}"
+    severity: error
+    given:
+      - $.paths.*.*.responses
+    then:
+      - field: "503"
+        function: schema
+        functionOptions:
+          schema: # What follow is a schema of the expected response content
+            required:
+              - content
+            properties:
+              content:
+                required:
+                  - application/json
+                properties:
+                  application/json:
+                    required:
+                      - schema
+                    properties:
+                      schema: # What follow is a schema of the expected schema
+                        required:
+                          - required
+                          - properties
+                        properties:
+                          required: # We expect a required list with message and endTime (and maybe more)
+                            allOf:
+                              - contains:
+                                  const: message
+                              - contains:
+                                  const: endTime
+                          properties: # We expect a properties object with message and endTime
+                            required:
+                              - message
+                              - endTime
+                            properties:
+                              message: # We expect a message property with type string
+                                properties:
+                                  type:
+                                    const: string
+                              endTime: # We expect a endTime property with type string and format date-time
+                                required:
+                                  - type
+                                  - format
+                                properties:
+                                  type:
+                                    const: string
+                                  format:
+                                    const: date-time

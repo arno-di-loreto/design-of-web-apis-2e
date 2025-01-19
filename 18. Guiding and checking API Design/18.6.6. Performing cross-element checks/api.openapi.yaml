@@ -1,0 +1,97 @@
+openapi: 3.1.0
+info:
+  title: Banking
+  version: "1.0"
+
+paths:
+  /accounts:
+    post:
+      # ✅ This operation uses a single read-write schema
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Account"
+      responses:
+        "201":
+          description: Transfer accepted
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Account"
+  /transfers:
+    post:
+      # This operations uses different schema
+      # 🚨 if no functionOptions.requestSuffix: Create, ✅ otherwise
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TransferCreate"
+      responses:
+        "201":
+          description: Transfer accepted
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Transfer"
+
+  /owners:
+    post:
+      # 🚨 This operation use inline schemas
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [name]
+              properties:
+                name:
+                  type: string
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [id, name]
+                properties:
+                  id:
+                    type: string
+                  name:
+                    type: string
+
+components:
+  schemas:
+    # A read-write schema
+    Account:
+      type: object
+      required: [id, name]
+      properties:
+        id:
+          type: string
+          readOnly: true
+        name:
+          type: string
+    # A read schema
+    Transfer:
+      type: object
+      required: [id, source, destination, amount]
+      id:
+        type: string
+      source:
+        type: string
+      destination:
+        type: string
+      amount:
+        type: number
+    # A write schema
+    TransferCreate:
+      type: object
+      required: [source, destination, amount]
+      source:
+        type: string
+      destination:
+        type: string
+      amount:
+        type: number

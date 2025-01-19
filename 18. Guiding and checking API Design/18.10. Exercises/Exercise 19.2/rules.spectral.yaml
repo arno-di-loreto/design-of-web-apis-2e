@@ -1,0 +1,16 @@
+rules:
+  no-path-level-query-parameters:
+    description: Path-level query parameters are not allowed
+    severity: error
+    given:
+      - $.paths.*.parameters[?(@.in === "query")]
+    then:
+      - function: undefined
+  post-search-no-query:
+    description: POST /search operations must not have query parameters
+    severity: error
+    given:
+      - $.paths[?(@property.match(/\/search$/))].parameters[?(@.in === "query")] # Not needed if no-path-level-query-parameters is used
+      - $.paths[?(@property.match(/\/search$/))].post.parameters[?(@.in === "query")]
+    then:
+      - function: undefined
