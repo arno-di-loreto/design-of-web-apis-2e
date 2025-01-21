@@ -22,11 +22,11 @@
     "18.9": "cd 18.9*/api-repository && spectral lint openapi.yaml",
     "18.9.1": "npm run 18.9",
     "18.9.2": "npm run 18.9",
-    "E.19.1": "cd \"18.10. Exercises/Exercise 19.1\" && spectral lint api.openapi.yaml -r rules.spectral.yaml",
-    "E.19.2": "cd \"18.10. Exercises/Exercise 19.2\" && spectral lint api.openapi.yaml -r rules.spectral.yaml",
-    "E.19.3": "cd \"18.10. Exercises/Exercise 19.3\" && spectral lint api.openapi.yaml -r rules.spectral.yaml",
-    "E.19.4": "cd \"18.10. Exercises/Exercise 19.4\" && spectral lint api.openapi.yaml -r rules.spectral.yaml",
-    "E.19.5": "cd \"18.10. Exercises/Exercise 19.5\" && spectral lint api.openapi.yaml -r rules.spectral.yaml"
+    "E.18.1": "cd \"18.10. Exercises/Exercise 18.1\" && spectral lint api.openapi.yaml -r rules.spectral.yaml",
+    "E.18.2": "cd \"18.10. Exercises/Exercise 18.2\" && spectral lint api.openapi.yaml -r rules.spectral.yaml",
+    "E.18.3": "cd \"18.10. Exercises/Exercise 18.3\" && spectral lint api.openapi.yaml -r rules.spectral.yaml",
+    "E.18.4": "cd \"18.10. Exercises/Exercise 18.4\" && spectral lint api.openapi.yaml -r rules.spectral.yaml",
+    "E.18.5": "cd \"18.10. Exercises/Exercise 18.5\" && spectral lint api.openapi.yaml -r rules.spectral.yaml"
   },
   "keywords": [
     "spectral"
