@@ -1,0 +1,23 @@
+openapi: 3.1.0
+
+info:
+  title: Online Shopping
+  version: "1.0"
+
+paths:
+  /products:
+    summary: Catalog
+    post:
+      summary: Add a product to the catalog
+      requestBody: # The operation's request body
+        description: Product info # Request body's description
+        content:
+          application/json: # Body's media type
+            schema: {} # Needed to make the body definition valid
+      responses: # The operation's possible responses
+        "201": # Output HTTP status code (Created)
+          description: Product added to the catalog # Subject-matter-oriented output description
+        "400": # Output HTTP status code (Bad Request)
+          description: Wrong product information # Subject-matter-oriented output description
+        "500": # Output HTTP status code (Server Error)
+          description: Unexpected server error # Subject-matter-oriented output description

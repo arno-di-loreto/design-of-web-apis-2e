@@ -1,0 +1,14 @@
+openapi: 3.1.0
+
+info:
+  title: Online Shopping
+  version: "1.0"
+
+paths:
+  /products/{productReference}: # The product resource path containing a path parameter
+    summary: Product
+    parameters:  # Path-level parameters list 
+      - name: productReference # The path parameter name (same as in path)
+        in: path # The path parameter location
+        required: true # Needed to make the parameter definition valid
+        schema: {} # Needed to make the parameter definition valid

@@ -1,0 +1,21 @@
+openapi: 3.1.0
+
+info:
+  title: Online Shopping
+  version: "1.0"
+
+paths: {}
+
+components: # Where to define reusable elements 
+  schemas: # Map of reusable JSON schemas
+    Product: 
+      type: object # The supplier property is an object (like the Product schema)
+      properties:
+        supplier:
+          type: object # The supplier property is an object (like the Product schema)
+          properties: # This object has two properties
+            supplierCode:
+              type: string
+              description: Unique identifier
+            name:
+              type: string

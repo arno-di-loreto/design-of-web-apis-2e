@@ -1,0 +1,15 @@
+openapi: 3.1.0
+
+info:
+  title: Shopping
+  version: "2.3"
+
+paths:
+  /products:
+    get:
+      parameters:
+        # A relative or absolute path or URL + JSON pointer inside the file
+        - $ref: "Listing 17.18. Creating an OpenAPI library..openapi.yaml#/components/parameters/Pagination" 
+      responses:
+        "200":
+          description: Products found

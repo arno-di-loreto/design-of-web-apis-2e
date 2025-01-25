@@ -1,0 +1,14 @@
+openapi: 3.1.0
+
+info:
+  title: Library
+  version: "1.0"
+
+paths:
+  /books/{bookReference}:
+    summary: A book # Fixed indentation
+    parameters: # Fixed indentation
+      - name: bookReference # Same name in path and parameter
+        in: path
+        required: true # A path parameter must be required
+        schema: {}

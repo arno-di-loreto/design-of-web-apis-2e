@@ -1,0 +1,52 @@
+openapi: 3.1.0
+
+info:
+  title: Online Shopping
+  version: "1.0"
+
+paths: {}
+
+components: # Where to define reusable elements 
+  schemas: # Map of reusable JSON schemas
+    Product: 
+      type: object
+      required: # The object's required properties
+        - productReference
+        - name
+        - category
+        - price
+        - dateAdded
+      properties:
+        productReference:
+          type: integer
+          description: Unique identifier
+        name:
+          type: string
+        description: # Non-required properties are absent from the required list
+          type: string
+        keywords: # Non-required properties are absent from the required list
+          type: array 
+          items:
+            type: string 
+        category:
+          type: string
+        price:
+          type: number
+          description: Price in USD
+        dateAdded:
+          type: string
+          format: date
+        isProductUnavailable: # Non-required properties are absent from the required list
+          type: boolean
+          description: Temporarily unavailable
+        supplier:
+          type: object
+          required: # The object's required properties
+            - supplierCode
+            - name
+          properties:
+            supplierCode:
+              type: string
+              description: Unique identifier
+            name:
+              type: string

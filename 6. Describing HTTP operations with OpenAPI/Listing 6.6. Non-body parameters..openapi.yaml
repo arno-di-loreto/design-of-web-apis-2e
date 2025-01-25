@@ -1,0 +1,20 @@
+openapi: 3.1.0
+
+info:
+  title: Online Shopping
+  version: "1.0"
+
+paths:
+  /products:
+    summary: Catalog
+    get:
+      summary: Search for products
+      parameters: # The operation's parameters list
+        - name: keywords # The parameter's name
+          in: query # The parameter's location
+          # No required property means the parameter is optional
+          schema: {} # Needed to make the parameter definition valid
+        - name: category # The parameter's name
+          in: query # The parameter's location
+          required: false # Explicitly makes the parameter optional
+          schema: {} # Needed to make the parameter definition valid

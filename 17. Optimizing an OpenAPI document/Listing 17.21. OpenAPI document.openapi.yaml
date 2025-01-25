@@ -1,0 +1,29 @@
+openapi: 3.1.0
+info:
+  title: Online Library
+  version: "1.0"
+paths:
+  /authors:
+    get:
+      responses:
+        "200":
+          description: Found authors
+          content: {}
+        "401":
+          description: Unauthorized
+          content: {}
+        "500":
+          description: Server error
+          content: {}
+  /books:
+    get:
+      responses:
+        "200":
+          description: Found books
+          content: {}
+        "401":
+          description: Invalid token
+          content: {}
+        "500":
+          description: Unexpected error
+          content: {}

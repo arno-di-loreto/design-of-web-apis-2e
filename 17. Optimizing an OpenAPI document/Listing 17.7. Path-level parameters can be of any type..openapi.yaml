@@ -1,0 +1,63 @@
+openapi: 3.1.0
+
+info:
+  title: Online Shopping
+  version: "1.0"
+
+paths:
+  /products/{productId}:
+    parameters:
+      - name: productId
+        in: path # Always define path parameters at the path level
+        required: true
+        schema:
+          type: string
+      - name: Version
+        in: header # A request header
+        required: true
+        schema:
+           type: string
+           const: "2"
+    get:
+      responses:
+        "200":
+          description: Product details
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Product" 
+    put:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Product" # Same schema used in request and response
+      responses: 
+        "200":
+          description: Product updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Product" # Same schema used in request and response
+    delete:
+      responses: 
+        "204":
+          description: Product deleted
+
+components:
+  schemas:
+    Product:
+      properties:
+        id:
+          readOnly: true # Will be used only on responses
+          type: string
+        price:
+          type: number
+        type:
+          properties:
+            code:
+              writeOnly: true # Will be used only on requests
+              type: string
+            name:
+              readOnly: true # Will be used only on responses
+              type: string

@@ -1,0 +1,25 @@
+openapi: 3.1.0
+
+info:
+  title: Online Library
+  version: "1.0"
+
+components:
+  schemas:
+    AuthorSummary:
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+    Author:
+      properties:
+        id:
+          type: string
+          readOnly: true
+        name:
+          type: string
+        genres:
+          type: array
+          items:
+            type: string

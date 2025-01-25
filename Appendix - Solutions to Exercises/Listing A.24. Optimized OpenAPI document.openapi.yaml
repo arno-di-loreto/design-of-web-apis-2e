@@ -1,0 +1,33 @@
+openapi: 3.1.0
+info: 
+  title: Library API
+  version: "1.0"
+paths:
+  /authors:
+    get:
+      responses:
+        "200":
+          description: Found authors
+          content: {}
+        "401":
+          $ref: "#/components/responses/UnauthorizedError" # Reference to reusable responses
+        "500":
+          $ref: "#/components/responses/UnexpectedError" # Reference to reusable responses
+  /books:
+    get:
+      responses:
+        "200":
+          description: Found books
+          content: {}
+        "401":
+          $ref: "#/components/responses/UnauthorizedError" # Reference to reusable responses
+        "500":
+          $ref: "#/components/responses/UnexpectedError" # Reference to reusable responses
+components: 
+  responses: # Reusable response definitions
+    UnauthorizedError:
+      description: Invalid token
+      content: {}
+    UnexpectedError:
+      description: Unexpected error
+      content: {}

@@ -1,0 +1,22 @@
+openapi: 3.1.0
+
+info:
+  title: Online Shopping
+  version: "1.0"
+
+components:
+  parameters:
+    Pagination:
+      name: pagination # Just shown in the documentation, not used in the request
+      description: | # Better clarify how this parameter works 
+        Pagination parameters (`.../?next=s00999&limit=10`)
+      in: query
+      schema:
+        type: object # Set type to object to create a group
+        properties: # Each property is serialized as a query parameter
+          next:
+            description: Next page cursor
+            type: string
+          limit:
+            description: Number of elements per page
+            type: number

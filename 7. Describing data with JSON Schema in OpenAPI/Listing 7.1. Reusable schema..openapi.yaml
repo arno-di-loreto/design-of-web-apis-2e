@@ -1,0 +1,11 @@
+openapi: 3.1.0
+
+info:
+  title: Online Shopping
+  version: "1.0"
+
+paths: {}
+
+components: # Where to define reusable elements 
+  schemas: # Map of reusable JSON schemas
+    Product: {} # The reusable schema identifier with an empty JSON Schema value

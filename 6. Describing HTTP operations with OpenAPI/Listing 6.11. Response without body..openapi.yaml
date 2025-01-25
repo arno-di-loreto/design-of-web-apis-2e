@@ -1,0 +1,26 @@
+openapi: 3.1.0
+
+info:
+  title: Online Shopping
+  version: "1.0"
+
+paths:
+  /products/{productReference}:
+    summary: Product
+    parameters: 
+      - name: productReference
+        in: path
+        required: true
+        schema: {}
+    delete:
+      summary: Remove a product from the catalog
+      responses:
+        '204':
+          description: Product removed 
+          # No data is returned on 204 No Content
+        '404':
+          description: No product found
+          content: # Data is returned on 404 Not Found
+            application/json:
+              schema:
+                description: Error info.

@@ -1,0 +1,77 @@
+openapi: 3.1.0
+
+info:
+  title: Online Shopping
+  version: "1.0"
+
+paths:
+  /products/{productId}:
+    parameters:
+      - name: productId
+        in: path
+        required: true
+        schema:
+          $ref: "#/components/schemas/ProductSummary/properties/productReference"
+    get:
+      responses:
+        "200":
+          description: Product details
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Product" # Same schema used in request and response
+
+components:
+  schemas:
+    ProductSummary: # A summary schema
+      type: object
+      required: 
+        - productReference
+        - name
+        - category
+        - price
+      properties:
+        productReference: 
+          type: integer
+          description: Unique identifier
+        name:
+          type: string
+        category:
+          type: string
+        price:
+          type: number
+          description: Price in USD
+
+    Product: # A complete schema
+      allOf: # Merge a list of schemas
+        - $ref: '#/components/schemas/ProductSummary' # Reference to the summary
+        - type: object # A schema defining all other properties
+          required:
+            - dateAdded
+          properties:
+            description:
+              type: string
+            keywords:
+              type: array 
+              items:
+                type: string 
+            dateAdded:
+              type: string
+              format: date
+            isProductUnavailable:
+              type: boolean
+              description: Temporarily unavailable
+            supplier:
+              $ref: '#/components/schemas/SupplierSummary'
+
+    SupplierSummary:
+      type: object
+      required:
+        - supplierCode
+        - name
+      properties:
+        supplierCode:
+          type: string
+          description: Unique identifier
+        name:
+          type: string  

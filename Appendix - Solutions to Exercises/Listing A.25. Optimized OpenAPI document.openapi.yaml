@@ -1,0 +1,34 @@
+openapi: 3.1.0
+info:
+  title: Library API
+  version: "1.0"
+paths:
+  /authors/{authorId}:
+    parameters: # Path level parameters
+      - $ref: "#/components/parameters/AuthorId" # Reusable parameter
+    get:
+      responses:
+        "200":
+          description: An author
+          content:
+            application/json: 
+              schema: 
+                $ref: "#/components/schemas/Author"
+    delete:
+      responses:
+        "204":
+          description: Author deleted.
+
+components:
+  parameters:
+    AuthorId: # Reusable parameter
+      name: authorId
+      in: path
+      required: true
+      schema:
+        $ref: "#/components/schemas/Author/properties/id" # Deep reference
+  schemas:
+    Author:
+      properties:
+        id: # Deep reference
+          type: string

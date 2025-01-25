@@ -1,0 +1,9 @@
+openapi: 3.1.0
+
+info:
+  title: Online Shopping
+  version: "1.0"
+
+paths:
+  /products: # The catalog resource path
+    summary: Catalog # A short description of the resource

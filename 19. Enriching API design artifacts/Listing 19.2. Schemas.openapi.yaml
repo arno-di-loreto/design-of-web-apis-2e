@@ -1,0 +1,25 @@
+openapi: 3.1.0
+
+info: 
+  title: Weather API
+  version: "1.0"
+  
+components:
+  schemas:
+    Speed:
+      properties:
+        id:
+          type: string
+        date:
+          type: string
+          format: date-time
+        value:
+          type: number
+        unit:
+          type: string
+        direction:
+          type: integer
+    Speeds:
+      type: array
+      items:
+        $ref: "#/components/schemas/Speed"

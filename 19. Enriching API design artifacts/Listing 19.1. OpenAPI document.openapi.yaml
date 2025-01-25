@@ -1,0 +1,46 @@
+openapi: 3.1.0
+
+info:
+  title: Online Library
+  version: "1.0"
+
+paths:
+  /authors:
+    get:
+      responses:
+        "200":
+          description: Authors
+  /authors/{authorId}/books:
+    parameters: 
+      - $ref: "#/components/parameters/AuthorId"
+    get:
+      responses:
+        "200":
+          description: Books
+  /books:
+    get:
+      responses:
+        "200":
+          description: Books
+  /books/{bookId}/authors:
+    parameters:
+      - $ref: "#/components/parameters/BookId"
+    get:
+      responses:
+        "200":
+          description: Author
+
+components: 
+  parameters:
+    AuthorId:
+      name: authorId
+      in: path
+      required: true
+      schema:
+        type: string
+    BookId:
+      name: bookId
+      in: path
+      required: true
+      schema:
+        type: string

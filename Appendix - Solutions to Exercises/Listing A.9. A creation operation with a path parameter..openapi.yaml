@@ -1,0 +1,32 @@
+openapi: 3.1.0
+
+info: 
+  title: Travel Agency
+  version: "1.0"
+  
+paths:
+  /packages/{packageId}/destinations:
+    summary: A travel package's destinations
+    parameters:
+      - name: packageId # Travel package identifier
+        in: path
+        required: true
+        schema: {}
+    post:
+      summary: Add a new destination to a travel package
+      requestBody: # Info for adding the new destination
+        description: Destination info.
+        content:
+          application/json:
+            schema: {}
+      responses:
+        "201": # The HTTP status indicates a creation
+          description: Destination added to the travel package
+          headers:
+            Location: # The URL of the added destination
+              description: Destination URL
+              schema: {}
+          content:
+            application/json:
+              schema:
+                description: Destination info. # The added destination data

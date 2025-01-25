@@ -1,0 +1,21 @@
+openapi: 3.1.0
+
+info:
+  title: Online Shopping
+  version: "1.0"
+
+components:
+  schemas:
+    Amount:
+      description: An amount of money
+      type: number
+    Product:
+      properties:
+        price:
+          description: The product's price in USD # Overrides the description of the following referenced component  
+          $ref: "#/components/schemas/Amount" # A reference to a reusable component
+    Order:
+      properties:
+        total:
+          description: The total amount 
+          $ref: "#/components/schemas/Amount"

@@ -1,0 +1,16 @@
+openapi: 3.1.0
+
+info:
+  title: Online Shopping
+  version: "1.0"
+
+paths: {}
+
+components: # Where to define reusable elements 
+  schemas: # Map of reusable JSON schemas
+    Product: 
+      type: object
+      properties:
+        productReference: # The key is the property name, and the value is a JSON Schema
+          type: integer # This property is an integer
+          description: Unique identifier # An optional description of the property

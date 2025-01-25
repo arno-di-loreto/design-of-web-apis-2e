@@ -1,0 +1,7 @@
+openapi: 3.1.0 # The OpenAPI version used in the document
+
+info: # API's metadata
+  title: Online Shopping # API's name
+  version: "1.0" # API's version
+
+paths: {} # Empty paths needed to make the document valid

@@ -1,0 +1,23 @@
+openapi: 3.1.0
+
+info:
+  title: Online Shopping
+  version: "1.0"
+
+components:
+  schemas:
+    Product:
+      properties:
+        id:
+          readOnly: true # Will be used only on responses
+          type: string
+        price:
+          type: number
+        type:
+          properties:
+            code:
+              writeOnly: true # Will be used only on requests
+              type: string
+            name:
+              readOnly: true # Will be used only on responses
+              type: string

@@ -1,0 +1,17 @@
+openapi: 3.1.0
+
+info: 
+  title: File storage
+  version: "1.0"
+  
+paths:
+  /files:
+    post:
+      requestBody:
+        content:
+          application/pdf: {} # PDFs, PNGs, and JPGs are accepted
+          image/png: {}       # PDFs, PNGs, and JPGs are accepted
+          image/jpeg: {}      # PDFs, PNGs, and JPGs are accepted
+      responses:
+        "201": # Returns Location header and file ID as usual
+          description: File uploaded

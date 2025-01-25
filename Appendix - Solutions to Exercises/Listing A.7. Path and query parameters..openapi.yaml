@@ -1,0 +1,19 @@
+openapi: 3.1.0
+info: 
+  title: Hiking Trails
+  version: "1.0"
+  
+paths:
+  /trails/{trailId}/segments:
+    summary: A trail's segments
+    parameters:
+      - name: trailId
+        in: path
+        required: true
+        schema: {}      
+    get:
+      summary: List segments of a trail
+      parameters:
+        - name: difficulty
+          in: query
+          schema: {}

@@ -1,0 +1,8 @@
+openapi: 3.1.0
+info:
+  title: Account # The API name
+  version: "1.0"
+servers:
+  - url: /account # The API base path comprising the API name
+paths:
+  /accounts: {} # A resource path

@@ -1,0 +1,16 @@
+openapi: 3.1.0
+
+info:
+  title: Online Shopping
+  version: "1.0"
+
+paths:
+  /products:
+    summary: Catalog
+    post:
+      summary: Add a product to the catalog
+      requestBody: # The operation's request body
+        description: Product info # Request body's description
+        content:
+          application/json: # Body's media type
+            schema: {} # Needed to make the body definition valid

@@ -1,0 +1,18 @@
+openapi: 3.1.0
+
+info:
+  title: Online Shopping
+  version: "1.0"
+
+paths:
+  /products:
+    summary: Catalog
+    get:
+      summary: Search for products
+      responses:
+        "200": # The HTTP status code can appear only once
+          description: Products matching filters found or no products matching filters # Merged output descriptions 
+        "400":
+          description: Wrong filters
+        "500":
+          description: Unexpected server error

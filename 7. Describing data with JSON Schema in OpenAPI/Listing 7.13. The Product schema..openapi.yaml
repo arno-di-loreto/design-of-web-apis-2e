@@ -1,0 +1,50 @@
+openapi: 3.1.0
+
+info:
+  title: Online Shopping
+  version: "1.0"
+
+components: 
+  schemas:
+    Product:
+      type: object
+      required:
+        - productReference
+        - name
+        - category
+        - price
+        - dateAdded
+      properties:
+        productReference: # Properties managed by the implementation in creation or replacement contexts
+          type: integer
+          description: Unique identifier
+        name:
+          type: string
+        description:
+          type: string
+        keywords:
+          type: array 
+          items:
+            type: string 
+        category:
+          type: string
+        price:
+          type: number
+          description: Price in USD
+        dateAdded: # Properties managed by the implementation in creation or replacement contexts
+          type: string
+          format: date
+        isProductUnavailable:
+          type: boolean
+          description: Temporarily unavailable
+        supplier:
+          type: object
+          required:
+            - supplierCode
+            - name # Properties managed by the implementation in creation or replacement contexts
+          properties:
+            supplierCode:
+              type: string
+              description: Unique identifier
+            name: # Properties managed by the implementation in creation or replacement contexts
+              type: string      

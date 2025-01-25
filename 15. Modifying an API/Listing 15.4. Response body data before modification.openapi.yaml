@@ -1,0 +1,50 @@
+openapi: 3.1.0
+
+info: 
+  title: Industrial Machine Monitoring API
+  version: "1.0"
+  
+paths:
+  /machine-reports/{reportId}:
+    get:
+      responses: 
+        "200":
+          description: Machine report
+          content: 
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MachineReport"
+
+components: 
+  schemas:
+    MachineReport:
+      required:
+        - id
+        - machineIdentifier
+        - conditionComment
+        - conditionStatus
+      properties:
+        id:
+          type: string
+          pattern: "[0-9]{10}"
+        date:
+          type: integer
+        conditionComment:
+          type: string
+        conditionStatus:
+          type: string
+          enum:
+            - green
+            - orange
+            - red
+        machineIdentifier:
+          type: integer
+        status:
+          type: string
+          enum:
+            - running
+            - stopped
+            - maintenance
+        temperature:
+          type: number
+          description: Celsius.

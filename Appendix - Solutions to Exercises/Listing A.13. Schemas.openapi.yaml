@@ -1,0 +1,33 @@
+openapi: 3.1.0
+
+info: 
+  title: Recruitment API
+  version: "1.0"
+  
+components:
+  schemas:
+    JobOffer: # Job offer resource complete model
+      required:
+        - reference
+        - created
+        - title
+        - description
+      properties:
+        reference:
+          type: string
+        created:
+          type: string
+          format: date # `created` is a YYYY-MM-DD date
+        title:
+          type: string
+        description:
+          type: string
+    JobOfferCreateOrReplace: # `JobOffer` minus read-only properties
+      required:
+        - title
+        - description
+      properties:
+        title:
+          type: string
+        description:
+          type: string

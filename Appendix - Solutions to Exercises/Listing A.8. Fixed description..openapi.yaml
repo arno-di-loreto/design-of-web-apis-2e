@@ -1,0 +1,22 @@
+openapi: 3.1.0
+
+info:
+  title: Hotel Booking
+  version: "1.0"
+
+paths:
+  /hotels/{hotelId}:
+    summary: An hotel
+    parameters: # Path parameter definition was missing
+      - name: hotelId
+        in: path
+        required: true
+        schema: {}
+    get:
+      summary: Get hotel details
+      responses:
+        "200": # HTTP status code wasn't quoted
+          description: Hotel details successfully retrieved
+          content:
+            application/json: # Missing media type
+              schema: {}

@@ -1,0 +1,21 @@
+openapi: 3.1.0
+info:
+  title: Library API
+  version: "1.0"
+components:
+  schemas:
+    AuthorSummary:
+      properties:
+        id:
+          type: string
+          readOnly: true # Applies to both schemas
+        name:
+          type: string
+    Author:
+      allOf: # Aggregates schemas
+        - $ref: "#/components/schemas/AuthorSummary"
+        - properties:
+            genres:
+              type: array
+              items:
+                type: string

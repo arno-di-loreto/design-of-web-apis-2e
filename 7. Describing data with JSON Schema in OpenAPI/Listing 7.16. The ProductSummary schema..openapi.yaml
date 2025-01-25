@@ -1,0 +1,105 @@
+openapi: 3.1.0
+
+info:
+  title: Online Shopping
+  version: "1.0"
+
+components: 
+  schemas:
+    Product:
+      type: object
+      required:
+        - productReference
+        - name
+        - category
+        - price
+        - dateAdded
+      properties:
+        productReference: 
+          type: integer
+          description: Unique identifier
+        name:
+          type: string
+        description:
+          type: string
+        keywords:
+          type: array 
+          items:
+            type: string 
+        category:
+          type: string
+        price:
+          type: number
+          description: Price in USD
+        dateAdded:
+          type: string
+          format: date
+        isProductUnavailable:
+          type: boolean
+          description: Temporarily unavailable
+        supplier:
+          type: object
+          required:
+            - supplierCode
+            - name
+          properties:
+            supplierCode:
+              type: string
+              description: Unique identifier
+            name:
+              type: string      
+
+    ProductCreationOrReplacement:  
+      type: object
+      required: 
+        - name
+        - category
+        - price
+        - supplier
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        keywords:
+          type: array 
+          items:
+            type: string
+        category:
+          type: string
+        price:
+          type: number
+          description: Price in USD
+        isProductUnavailable:
+          type: boolean
+          description: Temporarily unavailable
+        supplier:
+          type: object
+          required:
+            - supplierCode
+          properties:
+            supplierCode:
+              type: string
+              description: Unique identifier
+
+    ProductSummary: # The ProductSummary reusable schema is the summarized version of the Product schema
+      type: object
+      required: 
+        - productReference
+        - name
+        - category
+        - price
+      properties:
+        productReference: 
+          type: integer
+          description: Unique identifier
+        name:
+          type: string
+        description:
+          type: string  
+        category:
+          type: string
+        price:
+          type: number
+          description: Price in USD
+  

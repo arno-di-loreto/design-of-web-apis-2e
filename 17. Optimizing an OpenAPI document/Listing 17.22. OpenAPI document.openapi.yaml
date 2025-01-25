@@ -1,0 +1,32 @@
+openapi: 3.1.0
+info:
+  title: Online Library
+  version: "1.0"
+paths:
+  /authors/{authorId}:
+    get:
+      parameters:
+        - name: authorId
+          in: path
+          required: true
+          schema:
+            type: string 
+      responses:
+        "200":
+          description: An author
+          content:
+            application/json: 
+              schema: 
+                properties:
+                  id:
+                    type: string
+    delete:
+      parameters:
+        - name: authorId
+          in: path
+          required: true
+          schema:
+            type: string 
+      responses:
+        "204":
+          description: Author deleted.

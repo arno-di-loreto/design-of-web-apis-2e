@@ -1,0 +1,54 @@
+openapi: 3.1.0
+
+info: 
+  title: Fitness API
+  version: "1.0"
+
+paths:
+  /workouts:
+    post:
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/WorkoutCreate"
+      responses:
+        "201":
+          description: Created
+
+components:
+  schemas:
+    WorkoutCreate:
+      required: # Moving `required` has no impact
+        # Making `difficulty` optional is OK
+        - duration
+        - activities
+      properties: # Reordering `properties` has no impact (normally)
+        duration:
+          type: string # Changing `type` is not OK
+          description: ISO8601 duration.
+        difficulty:
+          type: string
+          enum:
+            - easy
+            - challenging
+            - insane # Adding value to `enum` is OK
+        activities:
+          type: array
+          minItems: 1
+          maxItems: 20 # Adding max array size is not OK
+          items:
+            required:
+              - name
+              - repetitions
+            properties:
+              name:
+                type: string
+                description: Plank, burpees, etc.
+              duration: # Renaming is not OK
+                type: string # Changing `type` is not OK
+                description: ISO8601 duration.
+              repetitions:
+                type: integer
+                description: Number of repetitions

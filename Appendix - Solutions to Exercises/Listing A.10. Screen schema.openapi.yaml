@@ -1,0 +1,40 @@
+openapi: 3.1.0
+
+info: 
+  title: Pixel Art Screen
+  version: "1.0"
+  
+components:
+  schemas:
+    Screen:
+      type: object
+      required:
+        - id
+        - pixels
+      properties:
+        id:
+          type: string
+        pixels:
+          $ref: "#/components/schemas/Pixels" # A reference to a reusable schema
+    Pixels:
+      description: A matrix of pixels (array of array)
+      type: array # An array of array
+      items:
+        type: array
+        items:
+          $ref: "#/components/schemas/Pixel"
+    Pixel:
+      type: object
+      required: # Brightness is optional
+        - rgb
+        - on
+      properties:
+        rgb:
+          description: "[r, g, b]" # Quotes necessary because of brackets
+          type: array
+          items:
+            type: integer # An integer is `integer` and a float is `number`
+        brightness:
+          type: number # An integer is `integer` and a float is `number`
+        on:
+          type: boolean

@@ -1,0 +1,33 @@
+openapi: 3.1.0
+
+info: 
+  title: Banking
+  version: "1.0"
+
+paths: 
+  /accounts/{accountId}:
+    parameters: 
+      - name: accountId
+        in: path
+        required: true
+        schema:
+          type: string
+    get:
+      responses:
+        "200":
+          description: Account details
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Account"
+
+components:
+  schemas:
+    Account:
+      properties:
+        id:
+          type: string
+        icon:
+          type: string
+          contentMediaType: image/png # What's in the string
+          contentEncoding: base64 # How it's encoded

@@ -1,0 +1,58 @@
+openapi: 3.1.0
+
+info: 
+  title: Industrial Machine Monitoring API
+  version: "1.0"
+  
+paths:
+  /machine-reports/{reportId}:
+    get:
+      responses: 
+        "200":
+          description: Machine report
+          content: 
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MachineReport"
+components: 
+  schemas: 
+    MachineReport:
+      required:
+        - id
+        - date # Making `date` required is OK
+        - machineId
+        - condition
+      properties:
+        id:
+          type: string
+          pattern: "[a-z]{3}-[0-9]{10}" # Changing ID format is likely not OK
+        date:
+          type: string # Changing `type` is not OK
+          format: date-time 
+        condition:
+          required:
+            - conditionComment
+            - conditionStatus
+          properties:
+            conditionComment: # Moving properties in an object is not OK 
+              type: string
+            conditionStatus: # Moving properties in an object is not OK
+              type: string
+              enum:
+                - green
+                - orange
+                - red
+        machineId: # Renaming a property is not OK
+          type: integer
+        status:
+          type: string
+          enum:
+            - running
+            - stopped
+            - maintenance # Adding value to `enum` is likely not OK
+        temperature:
+          type: number
+          description: Farhenheit. # Changing units is not OK
+        pressure: # Adding data is OK
+          type: number
+          description: Kilopascals.

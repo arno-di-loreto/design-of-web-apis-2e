@@ -1,0 +1,41 @@
+openapi: 3.1.0
+
+info: 
+  title: Weather API
+  version: "1.0"
+  
+components:
+  schemas:
+    Speed:
+      properties:
+        id:
+          type: string
+          pattern: "sp-[a-z]{3}-[0-9]+" # Regex
+          example: sp-abc-12345
+        date:
+          type: string
+          format: date-time
+        value:
+          type: number
+          exclusiveMinimum: 0 # Value can't be negative
+          default: 0 # Default value
+        unit:
+          type: string
+          enum: # kph or mph
+            - kph
+            - mph
+          default: kph
+        direction:
+          description: |
+            ##### Implementation # For implementers' eyes only
+
+            SPD23 column of the ZSPD table
+          type: integer
+          minimum: 0             # Direction >= 0 and < 360
+          exclusiveMaximum: 360  # Direction >= 0 and < 360
+    Speeds:
+      type: array
+      minItems: 1   # Array size
+      maxItems: 100 # Array size
+      items:
+        $ref: "#/components/schemas/Speed"

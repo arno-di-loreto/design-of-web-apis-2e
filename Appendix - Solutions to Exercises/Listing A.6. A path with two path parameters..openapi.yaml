@@ -1,0 +1,18 @@
+openapi: 3.1.0
+
+info:
+  title: Online Courses
+  version: 1.0.0
+
+paths:
+  /instructors/{instructorId}/courses/{courseId}:
+    summary: A specific course of a specific instructor
+    parameters:
+      - name: instructorId
+        in: path
+        required: true
+        schema: {}
+      - name: courseId
+        in: path
+        required: true
+        schema: {}

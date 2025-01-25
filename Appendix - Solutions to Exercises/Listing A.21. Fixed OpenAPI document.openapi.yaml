@@ -1,0 +1,15 @@
+openapi: "3.1.0"
+
+info:
+  title: Online Course Platform
+  version: "1.1" # Fixed version number
+
+servers:
+  - url: /v1 # Base URL for all resources
+
+paths:
+  /courses: # Base URL for all resources
+    get:
+      summary: Search courses
+    post: # New operation added to the courses resources
+      summary: Add a course

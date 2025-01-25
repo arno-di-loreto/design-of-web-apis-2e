@@ -1,0 +1,31 @@
+openapi: 3.1.0
+
+info:
+  title: Online Shopping
+  version: "1.0"
+
+paths: {}
+
+components: # Where to define reusable elements 
+  schemas: # Map of reusable JSON schemas
+    Product: 
+      type: object
+      properties:
+        productReference:
+          type: integer
+          description: Unique identifier
+        name:
+          type: string
+        description:
+          type: string
+        category: # The category property is a string and has no description
+          type: string
+        price:
+          type: number # Use the number type to represent a float
+          description: Price in USD
+        dateAdded:
+          type: string
+          format: date # Additional format information can be provided on the properties of type string, integer, and number
+        isProductUnavailable:
+          type: boolean
+          description: Temporarily unavailable

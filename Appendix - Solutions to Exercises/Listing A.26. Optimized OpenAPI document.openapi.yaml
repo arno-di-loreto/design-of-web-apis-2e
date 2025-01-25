@@ -1,0 +1,29 @@
+openapi: 3.1.0
+info:
+  title: Library API
+  version: "1.0"
+paths:
+  /authors:
+    post:
+      requestBody: 
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Author" # The `readOnly` flags "hides" `id` in the request body
+      responses:
+        "201":
+          description: Author created.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Author"
+
+components:
+  schemas:
+    Author:
+      properties:
+        id:
+          type: string
+          readOnly: true # The `readOnly` flags "hides" `id` in the request body
+        name:
+          type: string

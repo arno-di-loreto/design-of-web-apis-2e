@@ -1,0 +1,28 @@
+openapi: 3.1.0
+
+info: 
+  title: Social network
+  version: "1.0"
+  
+paths:
+  /threads:
+    get:
+      summary: Timeline
+      parameters:
+        - name: q
+          in: query
+          schema:
+            type: string
+        - name: next
+          in: query
+          schema:
+            type: string
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            default: 10000
+            maximum: 1000000
+      responses:
+       "200":
+         description: Found threads

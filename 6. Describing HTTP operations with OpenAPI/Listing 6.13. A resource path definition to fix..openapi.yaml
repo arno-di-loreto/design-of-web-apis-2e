@@ -1,0 +1,13 @@
+openapi: 3.1.0
+
+info:
+  title: Library
+  version: "1.0"
+
+paths:
+  /books/{bookReference}:
+  summary: A book
+  parameters:
+    - name: bookId
+      in: path
+      schema: {}

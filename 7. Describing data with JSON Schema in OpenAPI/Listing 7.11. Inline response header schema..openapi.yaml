@@ -1,0 +1,18 @@
+openapi: 3.1.0
+
+info:
+  title: Online Shopping
+  version: "1.0"
+
+paths:
+  /products:
+    post:
+      responses:
+        "201":
+          description: Product added to the catalog
+          headers:
+            Location:
+              description: Product URL
+              required: true
+              schema:
+                type: string # Ad hoc inline schema not copied from a resource schema

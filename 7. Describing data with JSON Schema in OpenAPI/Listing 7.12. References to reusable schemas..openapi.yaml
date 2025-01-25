@@ -1,0 +1,77 @@
+openapi: 3.1.0
+
+info:
+  title: Online Shopping
+  version: "1.0"
+
+paths:
+  /products:
+    post:
+      responses:
+        "201":
+          description: Product added to the catalog
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Product" # A reference to the Product schema defined under components.schemas
+
+  /products/{productReference}:
+    get:
+      parameters:
+        - name: productReference
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Product details
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Product" # A reference to the Product schema defined under components.schemas
+
+components:
+  schemas:
+    Product:
+      type: object
+      required:
+        - productReference
+        - name
+        - category
+        - price
+        - dateAdded
+      properties:
+        productReference:
+          type: integer
+          description: Unique identifier
+        name:
+          type: string
+        description:
+          type: string
+        keywords:
+          type: array 
+          items:
+            type: string 
+        category:
+          type: string
+        price:
+          type: number
+          description: Price in USD
+        dateAdded:
+          type: string
+          format: date
+        isProductUnavailable:
+          type: boolean
+          description: Temporarily unavailable
+        supplier:
+          type: object
+          required:
+            - supplierCode
+            - name
+          properties:
+            supplierCode:
+              type: string
+              description: Unique identifier
+            name:
+              type: string      

@@ -1,0 +1,22 @@
+openapi: 3.1.0
+
+info:
+  title: Online Shopping
+  version: "1.0"
+
+components:
+  responses: # Where to define reusable responses
+    ResourceNotFound: # The reusable response identifier
+      description: No resource was found
+      content:
+        'application/json':
+          schema:
+            $ref: '#/components/schemas/Error' # A reusable element may reference other reusable elements
+
+  schemas:
+    Error:
+      required: 
+        - message
+      properties:
+        message:
+          type: string

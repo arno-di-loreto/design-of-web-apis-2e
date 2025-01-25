@@ -1,0 +1,36 @@
+openapi: 3.1.0
+
+info: 
+  title: Banking
+  version: "1.0"
+
+paths:
+  /subscriptions:
+    post:
+      requestBody:
+        content:
+          multipart/form-data: 
+            schema:
+              properties: # Each root property is a part
+                data: # Default media type for object or array is application/json
+                  properties:
+                    name:
+                      type: string
+                    documents: # Data for each document
+                      type: array
+                      items:
+                        properties:
+                          type:
+                            type: string
+                            enum:
+                              - identity
+                              - residence
+                documents: # Each document content is in a part
+                  type: array
+                  items:
+                    type: string
+                    format: binary # Default media type is application/octet-stream
+            encoding: # Overrides part default media types
+              documents:
+                # Multiple media types possible
+                contentType: application/pdf,image/png,image/jpeg 

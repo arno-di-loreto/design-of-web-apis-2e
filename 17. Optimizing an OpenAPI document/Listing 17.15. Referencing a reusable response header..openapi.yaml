@@ -1,0 +1,24 @@
+openapi: 3.1.0
+
+info:
+  title: Online Shopping
+  version: "1.0"
+
+paths:
+  /products:
+    post:
+      responses:
+        "201":
+          description: Product created
+          headers:
+            Location: # Response header name must be indicated
+              description: The created product's URL # Overrides the reusable response header's description
+              $ref: '#/components/headers/ResourceLocation' # The reference to the reusable response header
+
+components:
+  headers: # Where to define reusable response headers
+    ResourceLocation: # The reusable header identifier (not its name)
+      description: Created resource URL
+      schema:
+        type: string
+        format: uri

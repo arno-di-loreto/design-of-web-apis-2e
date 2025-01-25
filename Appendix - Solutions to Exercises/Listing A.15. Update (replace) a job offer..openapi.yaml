@@ -1,0 +1,71 @@
+openapi: 3.1.0
+
+info: 
+  title: Recruitment API
+  version: "1.0"
+
+paths:
+  /job-offers:
+    post:
+      requestBody: 
+        description: Job offer info.
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/JobOfferCreateOrReplace" # References to schemas under `components.schemas`
+      responses:
+        "201":
+          description: Job offer created
+          content:
+            application/json: 
+              schema:
+                $ref: "#/components/schemas/JobOffer" # References to schemas under `components.schemas`
+
+  /job-offers/{jobOfferReference}:
+    parameters:
+      - name: jobOfferReference # Identifies a job offer
+        in: path
+        required: true
+        schema:
+          type: string
+    put:
+      requestBody: 
+        description: Job offer info.
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/JobOfferCreateOrReplace" # Same models as for create
+      responses:
+        "201":
+          description: Job offer created
+          content:
+            application/json: 
+              schema:
+                $ref: "#/components/schemas/JobOffer" # Same models as for create
+components:
+  schemas:
+    JobOffer: # Job offer resource complete model
+      required:
+        - reference
+        - created
+        - title
+        - description
+      properties:
+        reference:
+          type: string
+        created:
+          type: string
+          format: date # `created` is a YYYY-MM-DD date
+        title:
+          type: string
+        description:
+          type: string
+    JobOfferCreateOrReplace: # `JobOffer` minus read-only properties
+      required:
+        - title
+        - description
+      properties:
+        title:
+          type: string
+        description:
+          type: string

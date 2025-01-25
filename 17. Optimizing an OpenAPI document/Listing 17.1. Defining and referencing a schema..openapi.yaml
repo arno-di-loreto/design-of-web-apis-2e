@@ -1,0 +1,57 @@
+openapi: 3.1.0
+
+info:
+  title: Online Shopping
+  version: "1.0"
+
+paths:
+  /products:
+    get:
+      responses:
+        "200":
+          description: List of products
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/ProductSummary" # Reference to the ProductSummary schema
+components:
+  schemas:
+    SupplierSummary: # The identifier of a reusable schema
+      type: object
+      required:
+        - supplierCode
+        - name
+      properties:
+        supplierCode:
+          type: string
+          description: Unique identifier
+        name:
+          type: string  
+    
+    ProductSummary:
+      type: object
+      required: 
+        - productReference
+        - name
+        - category
+        - price
+      properties:
+        productReference: 
+          type: integer
+          description: Unique identifier
+        name:
+          type: string
+        description:
+          type: string  
+        category:
+          type: string
+        price:
+          type: number
+          description: Price in USD
+        supplier:
+          $ref: "#/components/schemas/SupplierSummary" # References to the SupplierSummary schema

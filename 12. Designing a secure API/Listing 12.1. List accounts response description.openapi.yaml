@@ -1,0 +1,18 @@
+openapi: 3.1.0
+info:
+  title: Banking
+  version: "1.0"
+paths:
+  /accounts:
+    get:
+      summary: List accounts
+      responses:
+        "200":
+          description: |
+            The returned account lists vary depending on the security context:
+            
+              - Account owner user: returns accounts owned by the end user.
+              - Bank advisor user: returns accounts owned by the account
+                <linearrow/>owners that the bank advisor manages.
+              - Partner application: returns accounts linked to partner 
+                <linearrow/>identifier.

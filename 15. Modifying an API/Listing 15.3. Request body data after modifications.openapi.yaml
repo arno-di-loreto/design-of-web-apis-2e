@@ -1,0 +1,53 @@
+openapi: 3.1.0
+
+info: 
+  title: Fitness API
+  version: "1.0"
+
+paths:
+  /workouts:
+    post:
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/WorkoutCreate"
+      responses:
+        "201":
+          description: Created
+
+components:
+  schemas:
+    WorkoutCreate:
+      required:
+        - duration
+        - activities
+      properties:
+        duration:
+          type: string
+          description: ISO8601 duration.
+        difficulty:
+          type: string
+          enum:
+            - easy
+            - challenging
+            - insane
+        activities:
+          type: array
+          minItems: 1
+          maxItems: 20
+          items:
+            required:
+              - name
+              - repetitions
+            properties:
+              name:
+                type: string
+                description: Plank, burpees, etc.
+              duration:
+                type: string
+                description: ISO8601 duration.
+              repetitions:
+                type: integer
+                description: Number of repetitions

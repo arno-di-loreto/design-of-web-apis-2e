@@ -1,0 +1,65 @@
+openapi: 3.1.0
+
+info:
+  title: Online Shopping
+  version: "1.0"
+
+paths:
+  /products/{productId}:
+    parameters:
+      - $ref: '#/components/parameters/ProductId' # A reference (JSON Pointer) targeting a reusable parameter
+    get:
+      responses: 
+        "200":
+          description: Product details
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Product"
+
+  /products/{productId}/suppliers:
+    parameters:
+      - description: Same as in Read Product # Overrides targeted parameter's description
+        $ref: '#/components/parameters/ProductId'
+    get:
+      responses: 
+        "200":
+          description: Product suppliers
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/SupplierSummary"
+
+
+components:
+  parameters: # Where to define reusable parameters
+    ProductId: # The reusable parameter identifier
+      name: productId # Same elements as for an item in the parameters list
+      in: path # Same elements as for an item in the parameters list
+      required: true # Same elements as for an item in the parameters list
+      schema:   # Same elements as for an item in the parameters list
+        $ref: "#/components/schemas/Product/properties/id"
+  schemas: 
+    Product:
+      properties:
+        id:
+          readOnly: true # Will be used only on responses
+          type: string
+        price:
+          type: number
+        type:
+          properties:
+            code:
+              writeOnly: true # Will be used only on requests
+              type: string
+            name:
+              readOnly: true # Will be used only on responses
+              type: string
+    SupplierSummary:
+      properties:
+        id:
+          type: integer
+        name:
+          type: string

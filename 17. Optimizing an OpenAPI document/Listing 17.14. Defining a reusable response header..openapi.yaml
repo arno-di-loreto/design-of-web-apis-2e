@@ -1,0 +1,13 @@
+openapi: 3.1.0
+
+info:
+  title: Online Shopping
+  version: "1.0"
+
+components:
+  headers: # Where to define reusable response headers
+    ResourceLocation: # The reusable header identifier (not its name)
+      description: Created resource URL
+      schema:
+        type: string
+        format: uri

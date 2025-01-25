@@ -1,0 +1,23 @@
+openapi: 3.1.0
+
+info:
+  title: Online Shopping
+  version: "1.0"
+
+paths:
+  /products/{productReference}:
+    summary: Product
+    parameters: # Path-level parameters list 
+      - name: productReference
+        in: path
+        required: true
+        schema:
+          type: integer # The parameter's inline schema is copied and pasted from the corresponding property of the Product reusable schema
+
+components:
+  schemas:
+    Product: 
+      type: object
+      properties:
+        productReference:
+          type: integer # The parameter's inline schema is copied and pasted from the corresponding property of the Product reusable schema

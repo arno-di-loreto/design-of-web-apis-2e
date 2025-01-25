@@ -1,0 +1,31 @@
+openapi: 3.1.0
+
+info:
+  title: Online Shopping
+  version: "1.0"
+
+components:
+  requestBodies: # Where to define reusable request bodies
+    ProductCreateOrReplace: # The reusable request body identifier
+        description: Product info # Same elements as in an operation's requestBody property
+        content: # Same elements as in an operation's requestBody property
+          application/json: # Same elements as in an operation's requestBody property
+            schema:  # Same elements as in an operation's requestBody property
+              $ref: "#/components/schemas/Product" # Reference to the Product schema
+
+  schemas:
+    Product:
+      properties:
+        id:
+          readOnly: true # Will be used only on responses
+          type: string
+        price:
+          type: number
+        type:
+          properties:
+            code:
+              writeOnly: true # Will be used only on requests
+              type: string
+            name:
+              readOnly: true # Will be used only on responses
+              type: string

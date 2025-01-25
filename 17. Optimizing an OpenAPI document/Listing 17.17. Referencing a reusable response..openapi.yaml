@@ -1,0 +1,43 @@
+openapi: 3.1.0
+
+info:
+  title: Online Shopping
+  version: "1.0"
+
+paths:
+  /products/{productReference}:
+    parameters:
+      - name: productReference
+        in: path
+        required: true
+        schema:
+          type: string
+    get:
+      responses:
+        "404": # HTTP status code must be indicated
+          $ref: '#/components/responses/ProductNotFound' # A reference to a reusable response
+    put:
+      responses:
+        "404":
+          $ref: '#/components/responses/ProductNotFound' # A reference to a reusable response
+
+components:
+  responses:
+    ProductNotFound:
+      description: No product was found # Overriding reusable response description
+      $ref: "#/components/responses/ResourceNotFound" # Reusable response based on reusable response
+
+    ResourceNotFound: # The reusable response identifier
+      description: No resource was found
+      content:
+        'application/json':
+          schema:
+            $ref: '#/components/schemas/Error' # A reusable element may reference other reusable elements
+
+  schemas:
+    Error:
+      required: 
+        - message
+      properties:
+        message:
+          type: string

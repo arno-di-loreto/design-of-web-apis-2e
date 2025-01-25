@@ -1,0 +1,16 @@
+openapi: 3.1.0
+
+info:
+  title: Hotel Booking
+  version: "1.0"
+
+paths:
+  /hotels/{hotelId}:
+    summary: An hotel
+    get:
+      summary: Get hotel details
+      responses:
+        200:
+          description: Hotel details successfully retrieved
+          content:
+            schema: {}

@@ -1,0 +1,13 @@
+openapi: "3.1.0"
+
+info:
+  title: Online Course Platform
+  version: athena-build.20250117.1830
+
+paths:
+  /v1/courses:
+    get:
+      summary: Search courses
+  /v2/courses:
+    post:
+      summary: Add a course

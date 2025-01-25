@@ -1,0 +1,29 @@
+openapi: 3.1.0
+
+info:
+  title: Online Shopping
+  version: "1.0"
+
+paths:
+  /products/{productId}:
+    parameters:
+     - name: productId
+       in: path
+       required: true
+       schema:
+        # Deep reference targeting the productReference schema
+         $ref: "#/components/schemas/Product/properties/id"
+
+components:
+  schemas:
+    ProducSummary:
+      properties:
+        id:
+          # Deep references targeting the productReference schema
+          $ref: "#/components/schemas/Product/properties/id"
+    Product:
+      properties:
+        id: # What's inside is the schema of the productReference property
+          title: ProductId # The schema's name that is shown near the type in tools
+          description: Product unique identifier
+          type: string

@@ -1,0 +1,118 @@
+openapi: 3.1.0
+
+info:
+  title: Online Shopping
+  version: "1.0"
+
+paths:
+  /products:
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ProductCreationOrReplacement" # A reference to the ProductCreationOfReplacement schema located under components.schemas
+      responses:
+        "201":
+          description: Product added to the catalog
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Product" # A reference to the Product schema located under components.schemas
+
+  /products/{productReference}:
+    parameters:
+      - name: productReference
+        in: path
+        required: true
+        schema:
+          type: string
+    put:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ProductCreationOrReplacement" # A reference to the ProductCreationOfReplacement schema located under components.schemas
+      responses: 
+        "200":
+          description: Updated product
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Product" # A reference to the Product schema located under components.schemas
+components: 
+  schemas:
+    Product:
+      type: object
+      required:
+        - productReference
+        - name
+        - category
+        - price
+        - dateAdded
+      properties:
+        productReference: # Properties managed by the implementation in creation or replacement contexts
+          type: integer
+          description: Unique identifier
+        name:
+          type: string
+        description:
+          type: string
+        keywords:
+          type: array 
+          items:
+            type: string 
+        category:
+          type: string
+        price:
+          type: number
+          description: Price in USD
+        dateAdded: # Properties managed by the implementation in creation or replacement contexts
+          type: string
+          format: date
+        isProductUnavailable:
+          type: boolean
+          description: Temporarily unavailable
+        supplier:
+          type: object
+          required:
+            - supplierCode
+            - name # Properties managed by the implementation in creation or replacement contexts
+          properties:
+            supplierCode:
+              type: string
+              description: Unique identifier
+            name: # Properties managed by the implementation in creation or replacement contexts
+              type: string      
+    ProductCreationOrReplacement: # ProductCreationOrReplacement is a copy of the Product schema 
+      type: object
+      required: # Implementation-managed properties have been removed from the required lists, and the properties maps
+        - name
+        - category
+        - price
+        - supplier
+      properties: # Implementation-managed properties have been removed from the required lists, and the properties maps
+        name:
+          type: string
+        description:
+          type: string
+        keywords:
+          type: array 
+          items:
+            type: string
+        category:
+          type: string
+        price:
+          type: number
+          description: Price in USD
+        isProductUnavailable:
+          type: boolean
+          description: Temporarily unavailable
+        supplier:
+          type: object
+          required: # Implementation-managed properties have been removed from the required lists, and the properties maps
+            - supplierCode
+          properties: # Implementation-managed properties have been removed from the required lists, and the properties maps
+            supplierCode:
+              type: string
+              description: Unique identifier

@@ -1,0 +1,17 @@
+openapi: 3.1.0
+
+info:
+  title: Online Shopping
+  version: "1.0"
+
+paths: {}
+
+components: # Where to define reusable elements 
+  schemas: # Map of reusable JSON schemas
+    Product: 
+      type: object
+      properties:
+        keywords:
+          type: array # The keywords property is an array
+          items: # The items property contains the JSON Schema of the array's elements
+            type: string # The keywords property is an array of strings

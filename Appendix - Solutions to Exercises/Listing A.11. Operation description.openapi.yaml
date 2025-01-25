@@ -1,0 +1,35 @@
+openapi: 3.1.0
+
+info: 
+  title: Music Streaming
+  version: "1.0"
+  
+paths:
+  /artists/{artistId}/albums:
+    parameters:
+      - name: artistId # The path parameter is a string
+        in: path
+        required: true
+        schema:
+          type: string
+    get:
+      summary: Search an artist's albums
+      parameters:
+        - name: releaseYear # The query parameter is an optional integer
+          in: query
+          required: false 
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Albums found
+          content:
+            application/json: # Content is in JSON
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/AlbumSummary" # Reference to array items schema
+components: 
+  schemas: 
+    AlbumSummary: # Schema for album summary
+      type: object
